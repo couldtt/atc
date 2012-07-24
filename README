@@ -1,0 +1,8 @@
+分析测试中心
+
+member后台，对应member下的控制器，membercp下的view
+admin后台，对应admin下的控制器，admincp下的view
+
+表单提交时，控制器中的方法为_method_post, 则在表单的action之只写method即可，相应的转换见hooks。
+
+member中已开发仪器论证投票模块、设备保修模块。
