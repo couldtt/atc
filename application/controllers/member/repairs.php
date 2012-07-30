@@ -10,10 +10,9 @@ class Repairs extends Member_Controller{
 	}
 
 	function list_page(){
-		header("Content-Type: text/html; charset=utf-8");
-		echo "<pre>";
-		print_r($this->repairs_mdl->get_equips());	
-		echo "</pre>";
+		$res = $this->repairs_mdl->get_equips();
+        $data['res'] = $res;
+        $this->load->view('member/repairs_list', $data);
 	}
 
 	function add_page(){
@@ -29,5 +28,10 @@ class Repairs extends Member_Controller{
 		$create_time = nowdate();
 
 	}
+
+    function change(){
+        $status = $this->input->get('status');
+        echo $status;
+    }
 }
 ?>

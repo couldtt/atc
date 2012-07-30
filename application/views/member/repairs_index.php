@@ -10,6 +10,8 @@
 	<div id="header"><h1>设备报修模块</h1></div>
 	<div id="content">
 		<div id="sidebar">
+            <?php echo anchor('member/repairs/list_page','待修设备列表'); ?>
+            <br />
 			<?php echo anchor('member/repairs/add_page','添加待修设备'); ?>
 			<br />
 			<?php echo anchor('member/repairs/finish_page','确认已修设备'); ?>
