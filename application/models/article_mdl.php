@@ -2,8 +2,8 @@
 class Article_mdl extends CI_Model{
 	function __construct(){
 		parent::__construct();
-	}	
-	
+	}
+
 	/*
 	 *@功能：通过分类ID获取分类名称
 	 *@parameter:id(文章ID编号)
@@ -21,7 +21,7 @@ class Article_mdl extends CI_Model{
 					->row();
 		return $res->catname;
 	}
-	
+
 	/*
 	 *@功能：通过ID获取文章内容
 	 *@parameters: id(文章编号)
@@ -43,7 +43,7 @@ class Article_mdl extends CI_Model{
 	/*
 	 *@功能：通过分类ID获取分类下的内容
 	 *@parameters: id(分类编号), from(开始查询的地方), limit(查询结果的数量)
-	 *@return：一个对象数组 
+	 *@return：一个对象数组
 	 */
 	function get_arts_by_classid($id, $from=0, $limit=10){
 		$map = array(
@@ -60,12 +60,12 @@ class Article_mdl extends CI_Model{
 	/*
 	 *@功能:通过分类ID获取分类下的标题与时间
 	 *@parameters: id(分类编号), from(开始查询的地方), limit(查询结果的数量)
-	 *@return：一个对象数组 
+	 *@return：一个对象数组
 	 */
 	function get_arts_brief_by_id($id, $from=0, $limit=10){
 		$map = array(
-			'classid' => $id	
-		);	
+			'classid' => $id
+		);
 		$res = $this->db
 					->select('id,title,update_time')
 					->where($map)
@@ -73,8 +73,25 @@ class Article_mdl extends CI_Model{
 					->get('dili_u_m_article')
 					->result();
 		return $res;
-
 	}
+
+    /*
+     *@功能：通过分类ID获取最近的标题
+     *@parameter:id(分类编号), limit(限定的数量)
+     *@return:一个对象数组
+     * */
+    function get_latest_by_id($id, $limit){
+        $map = array(
+            'classid' => $id
+        );
+        $res = $this->db
+                    ->select('id,title,update_time')
+                    ->where($map)
+                    ->order_by('update_time', 'desc')
+                    ->get('dili_u_m_article')
+                    ->result();
+        return $res;
+    }
 
 	/*
 	 *@功能：获得所有分类
@@ -100,8 +117,21 @@ class Article_mdl extends CI_Model{
 		$res = $this->db
 					->where($map)
 					->count_all_results('dili_u_m_article');
-		return $res;  
+		return $res;
 	}
+
+    /**
+     *@功能：获取最新的友情链接
+     *@parameter: limit(限制的条数)
+     *@return: 一个对象数组
+     */
+    function get_flinks($limit = 8){
+        $res = $this->db
+                    ->limit($limit, 0)
+                    ->get('dili_u_m_flinks')
+                    ->result();
+        return $res;
+    }
 
 }
 ?>

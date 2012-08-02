@@ -8,7 +8,8 @@ class Index extends CI_Controller{
 
 	public function index(){
 		$this->site_mdl->header();
-		$this->site_mdl->notification();
+        $this->site_mdl->content();
+        $this->site_mdl->footer();
 	}
-	
+
 }

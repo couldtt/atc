@@ -160,6 +160,13 @@ $setting['menus']=array (
             'extra' => 'repairs',
             'menu_name' => '设备报修模块',
           ),
+          2 => 
+          array (
+            'class_name' => 'content',
+            'method_name' => 'view',
+            'extra' => 'flinks',
+            'menu_name' => '友情链接模块',
+          ),
         ),
       ),
       1 => 

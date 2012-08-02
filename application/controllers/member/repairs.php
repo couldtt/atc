@@ -29,9 +29,11 @@ class Repairs extends Member_Controller{
 
 	}
 
-    function change(){
-        $status = $this->input->get('status');
-        echo $status;
+    function _change_post(){
+        $status = $this->input->post('status');
+        $id = $this->input->post('id');
+        $res = $this->repairs_mdl->change_status($id, $status);
+        echo $res;
     }
 }
 ?>
