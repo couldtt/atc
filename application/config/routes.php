@@ -41,6 +41,7 @@
 $route['default_controller'] = "index";
 $route['admin'] = "admin/login";
 $route['404_override'] = '';
+$route['center'] = "centerbrief";
 
 
 /* End of file routes.php */

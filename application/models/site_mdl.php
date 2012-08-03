@@ -14,16 +14,10 @@ class Site_mdl extends CI_Model{
 		$this->load->view('nav');
 	}
 
-	function notification(){
-		$res = $this->article_mdl->get_arts_brief_by_id(3);
-		$data['arts'] = $res;
-		$this->load->view('index/notification',$data);
-	}
-
 	function content(){
 		$res = $this->article_mdl->get_latest_by_id(3,8);
 		$data['notices'] = $res;
-        $flinks = $this->article_mdl->get_flinks();
+        $flinks = $this->get_flinks();
         $data['flinks'] = $flinks;
 		$this->load->view('index/content',$data);
 	}
@@ -32,6 +26,18 @@ class Site_mdl extends CI_Model{
         $this->load->view('footer');
     }
 
+    /**
+     *@功能：获取最新的友情链接
+     *@parameter: limit(限制的条数)
+     *@return: 一个对象数组
+     */
+    function get_flinks($limit = 8){
+        $res = $this->db
+                    ->limit($limit, 0)
+                    ->get('dili_u_m_flinks')
+                    ->result();
+        return $res;
+    }
 
 }
 ?>

@@ -57,24 +57,6 @@ class Article_mdl extends CI_Model{
 		return $res;
 	}
 
-	/*
-	 *@功能:通过分类ID获取分类下的标题与时间
-	 *@parameters: id(分类编号), from(开始查询的地方), limit(查询结果的数量)
-	 *@return：一个对象数组
-	 */
-	function get_arts_brief_by_id($id, $from=0, $limit=10){
-		$map = array(
-			'classid' => $id
-		);
-		$res = $this->db
-					->select('id,title,update_time')
-					->where($map)
-					->limit($limit, $from)
-					->get('dili_u_m_article')
-					->result();
-		return $res;
-	}
-
     /*
      *@功能：通过分类ID获取最近的标题
      *@parameter:id(分类编号), limit(限定的数量)

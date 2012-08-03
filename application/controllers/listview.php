@@ -16,9 +16,17 @@ class ListView extends CI_Controller{
 	}
 
 	private function list_with_css($id){
-		$res = $this->article_mdl->get_arts_brief_by_id($id);	
+		$res = $this->article_mdl->get_arts_brief_by_id($id);
 		$data['art_lists'] = $res;
 		$this->load->view('list_css',$data);
 	}
+
+    public function center_brief($id){
+        $data['brief_cat'] = $this->article_mdl->get_art_by_id($id);
+        $this->load->view('header');
+        $this->load->view('nav');
+        $this->load->view('center_brief',$data);
+        $this->load->view('footer');
+    }
 }
 ?>
