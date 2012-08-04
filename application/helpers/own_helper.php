@@ -18,5 +18,12 @@ if (!function_exists('nowdate') ){
 		return date('Y-m-d H:i', time());
 	}
 }
+if ( !function_exists('dump') ){
+    function dump($data){
+        echo "<pre>";
+        print_r($data);
+        echo "</pre>";
+    }
+}
 
 ?>

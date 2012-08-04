@@ -70,8 +70,28 @@ class Article_mdl extends CI_Model{
                     ->select('id,title,update_time')
                     ->where($map)
                     ->order_by('update_time', 'desc')
+                    ->limit($limit, 0)
                     ->get('dili_u_m_article')
                     ->result();
+        return $res;
+    }
+
+    /*
+     *@功能:通过分类ID获取标题和时间
+     *@parameter:ID(分类ID), $from(起始位置), $limit(限定条数)
+     *@return 一个对象数组
+     * */
+    function get_arts_brief_by_id($id, $from, $limit){
+        $map = array(
+            'classid' => $id
+        );
+        $res  = $this->db
+                     ->select('id,title,update_time')
+                     ->where($map)
+                     ->order_by('update_time', 'desc')
+                     ->limit($limit, $from)
+                     ->get('dili_u_m_article')
+                     ->result();
         return $res;
     }
 

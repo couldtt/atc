@@ -3,7 +3,7 @@
   <div id="shang">
       <div id="tzgg">
         <div id="more">
-        <a href="#"><img src="<?php echo base_url();?>assets/pic/more.png" /></a>
+        <a href="<?php echo site_url("listview/view/3"); ?>"><img src="<?php echo base_url();?>assets/pic/more.png" /></a>
         </div>
         <div id="zi1">
             <ul>
@@ -77,8 +77,8 @@
         <div class="xiaotu"><!-- 仪器设备故障 -->
         <a href="<?php echo site_url('member/repairs');?>"><img src="<?php echo base_url();?>assets/pic/xiaokuai2.png" /></a>
         </div>
-        <div class="xiaotu">
-        <a href="#"><img src="<?php echo base_url();?>assets/pic/xiaokuai3.png" /></a>
+        <div class="xiaotu"><!-- 大型仪器设备论证 -->
+        <a href="<?php echo site_url('member/votes');?>"><img src="<?php echo base_url();?>assets/pic/xiaokuai3.png" /></a>
         </div>
         <div class="xiaotu">
         <a href="#"><img src="<?php echo base_url();?>assets/pic/xiaokuai4.png" /></a>

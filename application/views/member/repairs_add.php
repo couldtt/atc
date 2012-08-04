@@ -9,20 +9,23 @@
 <div id="container">
 	<div id="header"><h1>设备报修模块</h1></div>
 	<div id="content">
-		<div id="sidebar">
-			<?php echo anchor('member/repairs/add_page','添加待修设备'); ?>
-			<br />
-			<?php echo anchor('member/repairs/finish_page','确认已修设备'); ?>
-		</div>
 		<div id="main">
 			<form action="add" method="POST">
-				<label for="equip_name">设备名：</label>
-				<input type="text" name="equip_name" />
-				<label for="person">报修人：</label>
-				<input type="text" name="person" id="id_person" />
-				<label for="reason">报修原因：</label>
-				<textarea name="reason" id="id_reason" cols="30" rows="10"></textarea>
-				<input type="submit" value="提交" />
+				<p>
+					<label for="equip_name">设&nbsp;备&nbsp;名&nbsp;</label>
+					<input type="text" name="equip_name" />
+				</p>
+				<p>
+					<label for="person">报&nbsp;修&nbsp;人&nbsp;</label>
+					<input type="text" name="person" id="id_person" />
+				</p>
+				<p>
+					<label for="reason" style="display:block; float:left;">报修原因</label>
+					<textarea name="reason" id="id_reason" cols="30" rows="10"></textarea>
+				</p>
+				<p>
+					<input type="submit" value="提交" />
+				</p>
 			</form>
 		</div>
 	</div>

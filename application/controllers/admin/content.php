@@ -4,14 +4,14 @@
 	{
 		function __construct()
 		{
-			parent::__construct();	
+			parent::__construct();
 		}
-						
+
 		function view()
 		{
 			$this->_view_post();
 		}
-		
+
 		function _view_post()
 		{
 			$model = $this->input->get('model');
@@ -28,64 +28,64 @@
 			$this->load->library('dili/form');
 			$this->load->library('dili/field_behavior');
 			$data['provider'] = $this->_pagination($data['model']);
-			$this->_template('content_list',$data);	
+			$this->_template('content_list',$data);
 		/*	header("Content-Type: text/html; charset=utf-8");
 			echo "<pre>";
 			print_r($data);
 		 	echo "</pre>";
 		*/
 		}
-		
+
 		function _pagination( & $model){
 			$this->load->library('pagination');
 			$config['base_url'] = backend_url('content/view');
 			$config['per_page'] = $model['perpage'];
 			$config['uri_segment'] = 4;
 			$config['suffix'] = '?model='.$model['name'];
-				
+
 			$condition = array('id >'=> '0');
 			$data['where'] = array();
-			
+
 			foreach($model['searchable'] as $v)
 			{
 				$this->field_behavior->on_do_search($model['fields'][$v],$condition,$data['where'],$config['suffix']);
 			}
-			
+
 			$this->plugin_manager->trigger_model_action('register_before_query' , $condition);
-			
+
 			$config['total_rows'] = $this->db->where($condition)->count_all_results('dili_u_m_'.$model['name']);
-			
+
 			$this->db->from('dili_u_m_'.$model['name']);
 			$this->db->select('id');
 			$this->db->where($condition);
 			foreach($model['listable'] as $v)
 			{
-				$this->db->select($model['fields'][$v]['name']);	
+				$this->db->select($model['fields'][$v]['name']);
 			}
-			
+
 			$this->db->order_by('create_time','DESC');
 			$this->db->offset($this->uri->segment($config['uri_segment'],0));
 			$this->db->limit($config['per_page']);
-			
+
 			$data['list'] = $this->db->get()->result();
-			
-			
+
+
 			$this->plugin_manager->trigger_model_action('register_before_list', $data['list']);
-			
+
 			$config['first_url'] = $config['base_url'] . $config['suffix'];
 			$this->pagination->initialize($config);
 			$data['pagination'] = $this->pagination->create_links();
 			return $data;
 		}
-		
+
 		function form()
 		{
 			$this->_save_post();
 		}
-				
+
 		function _save_post()
 		{
-			
+
 			$model = $this->input->get('model');
 			$this->settings->load('model/'.$model);
 			$data['model'] = $this->settings->item('models');
@@ -102,9 +102,9 @@
 				$this->_check_permit('add');
 				$data['content'] = array();
 			}
-			
+
 			$this->load->library('form_validation');
-			
+
 			foreach($data['model']['fields'] as $v)
 			{
 				if($v['rules'] != '')
@@ -112,7 +112,7 @@
 					$this->form_validation->set_rules($v['name'], $v['description'], str_replace(",","|",$v['rules']));
 				}
 			}
-			
+
   			if ($this->form_validation->run() == FALSE)
   			{
 				$this->load->library('dili/form');
@@ -130,10 +130,10 @@
 						$data[$v['name']] = $this->input->post($v['name']);
 						if(($v['type'] == 'checkbox' || $v['type'] == 'checkbox_from_model') && is_array($data[$v['name']]))
 						{
-							$data[$v['name']] = $data[$v['name']] ? implode(',',$data[$v['name']]) : '';     
+							$data[$v['name']] = $data[$v['name']] ? implode(',',$data[$v['name']]) : '';
 						}
 					}
-					
+
 				}
 				$attachment = $this->input->post('uploadedfile');
 				if( $id )
@@ -145,13 +145,13 @@
 					$this->plugin_manager->trigger_model_action('register_after_update', $data , $id);
 					if($attachment != '0')
 					{
-						$this->db->set('model',$modeldata['id'])->set('from',0)->set('content',$id)->where('aid in ('.$attachment.')')->update('dili_attachments');	
+						$this->db->set('model',$modeldata['id'])->set('from',0)->set('content',$id)->where('aid in ('.$attachment.')')->update('dili_attachments');
 					}
 					$this->_message('修改成功！','content/form',true,'?model='.$modeldata['name'].'&id='.$id);
 				}
 				else
 				{
-				    
+
 					$data['create_time'] = $data['update_time'] = $this->session->_get_time();
 					$this->plugin_manager->trigger_model_action('register_before_insert',$data);
 					$this->db->insert('dili_u_m_'.$model,$data);
@@ -159,20 +159,20 @@
 					$this->plugin_manager->trigger_model_action('register_after_insert',$data,$id);
 					if($attachment != '0')
 					{
-						$this->db->set('model',$modeldata['id'])->set('from',0)->set('content',$id)->where('aid in ('.$attachment.')')->update('dili_attachments');	
+						$this->db->set('model',$modeldata['id'])->set('from',0)->set('content',$id)->where('aid in ('.$attachment.')')->update('dili_attachments');
 					}
-					$this->_message('添加成功！','content/view',true,'?model='.$modeldata['name']);	
+					$this->_message('添加成功！','content/view',true,'?model='.$modeldata['name']);
 				}
 			}
-			
+
 		}
-		
+
 		function del()
 		{
 			$this->_check_permit();
-			$this->_del_post();	
+			$this->_del_post();
 		}
-		
+
 		function _del_post()
 		{
 			$this->_check_permit();
@@ -181,7 +181,7 @@
 			$model_id = $this->db->select('id ')->where('name',$model)->get('dili_models')->row()->id;
 			if($ids)
 			{
-				
+
 				if(!is_array($ids))
 				{
 					$ids = array($ids);
@@ -190,15 +190,15 @@
 				$attachments = $this->db->select('name , folder , type')->where('model',$model_id)->where('from',0)->where_in('content',$ids)->get('dili_attachments')->result();
 				foreach($attachments as $attachment)
 				{
-					$this->platform->file_delete(FCPATH.$this->settings->item('attachment_dir').'/'.$attachment->folder.'/'.$attachment->name.'.'.$attachment->type);		
+					$this->platform->file_delete(FCPATH.$this->settings->item('attachment_dir').'/'.$attachment->folder.'/'.$attachment->name.'.'.$attachment->type);
 				}
 				$this->db->where('model',$model_id)->where_in('content',$ids)->where('from',0)->delete('dili_attachments');
 				$this->db->where_in('id',$ids)->delete('dili_u_m_'.$model);
 				$this->plugin_manager->trigger_model_action('register_after_delete', $ids);
 			}
-			$this->_message('删除成功！','',true);	
+			$this->_message('删除成功！','',true);
 		}
-		
+
 		function attachment($action = 'list')
 		{
 			if($action == 'list')
@@ -211,7 +211,7 @@
 										 ->result_array();
 				foreach($attachments as $v)
 				{
-					array_push($response,implode('|',$v));	
+					array_push($response,implode('|',$v));
 				}
 				echo implode(',',$response);
 			}
@@ -219,16 +219,16 @@
 			{
 				$attach = $this->db->select('aid,name,folder,type')
 								   ->where('aid',$this->input->get('id'))
-								   ->get('dili_attachments')->row(); 
+								   ->get('dili_attachments')->row();
 				if($attach)
 				{
-					$this->platform->file_delete(FCPATH.$this->settings->item('attachment_dir').'/'.$attach->folder.'/'.$attach->name.'.'.$attach->type);		
+					$this->platform->file_delete(FCPATH.$this->settings->item('attachment_dir').'/'.$attach->folder.'/'.$attach->name.'.'.$attach->type);
 					$this->db->where('aid',$attach->aid)->delete('dili_attachments');
 					echo 'ok';
 				}
 			}
 		}
-		
-		
-		
+
+
+
 	}

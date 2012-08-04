@@ -23,6 +23,15 @@ class Repairs_mdl extends CI_Model{
 		return $res;
 	}
 
+    function add_equip($data){
+        $data['status'] = '未维修';
+        $res =  $this->db
+                      ->insert('dili_u_m_repairs', $data);
+        if ($res) {
+            return true;
+        }
+    }
+
     function change_status($id, $status){
         $map = array(
             'id' => $id
@@ -32,7 +41,8 @@ class Repairs_mdl extends CI_Model{
             '1' => '已维修'
         );
         $data = array(
-            'status' => $maintain[$status]
+            'status' => $maintain[$status],
+            'update_time' => time()
         );
         $flag = $this->db
                     ->where($map)

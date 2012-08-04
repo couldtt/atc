@@ -1,5 +1,6 @@
 <?php
 class Repairs extends Member_Controller{
+
 	function __construct(){
 		parent::__construct();
 		$this->load->model('repairs_mdl');
@@ -12,6 +13,7 @@ class Repairs extends Member_Controller{
 	function list_page(){
 		$res = $this->repairs_mdl->get_equips();
         $data['res'] = $res;
+        unset($res);
         $this->load->view('member/repairs_list', $data);
 	}
 
@@ -22,11 +24,13 @@ class Repairs extends Member_Controller{
 	function _add_post(){
 		header("Content-Type: text/html; charset=utf-8");
 		//获取表单数据
-		$equip_name = $this->input->post('equip_name');
-		$person = $this->input->post('person');
-		$reason = $this->input->post('reason');
-		$create_time = nowdate();
-
+		$data['equip_name'] = $this->input->post('equip_name');
+		$data['person'] = $this->input->post('person');
+		$data['reason'] = $this->input->post('reason');
+		$data['create_time'] = nowdate();
+        if ($this->repairs_mdl->add_equip($data)){
+            echo 'success!';
+        };
 	}
 
     function _change_post(){

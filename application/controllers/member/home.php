@@ -17,5 +17,7 @@ class Home extends Member_Controller{
 
 	protected function _side(){
 		echo anchor('member/repairs','设备报修模块');
+        echo "<br />";
+		echo anchor('member/votes','大型仪器设备论证');
 	}
 }

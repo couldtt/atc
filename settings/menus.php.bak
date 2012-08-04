@@ -167,13 +167,6 @@ $setting['menus']=array (
             'extra' => 'flinks',
             'menu_name' => '友情链接模块',
           ),
-          3 => 
-          array (
-            'class_name' => 'content',
-            'method_name' => 'view',
-            'extra' => 'equips',
-            'menu_name' => '仪器设备模块',
-          ),
         ),
       ),
       1 => 

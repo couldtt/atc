@@ -3,7 +3,7 @@ class ListView extends CI_Controller{
 
 	public function __construct(){
 		parent::__construct();
-		$this->load->model('article_mdl');
+		$this->load->model(array('article_mdl','site_mdl'));
 	}
 
 	public function index(){
@@ -12,21 +12,17 @@ class ListView extends CI_Controller{
 	}
 
 	public function view($id = 1){
-		$this->list_with_css($id);
+		$this->list_with_css($id,0,20);
 	}
 
-	private function list_with_css($id){
-		$res = $this->article_mdl->get_arts_brief_by_id($id);
+	private function list_with_css($id,$from,$limit){
+		$res = $this->article_mdl->get_arts_brief_by_id($id,$from,$limit);
 		$data['art_lists'] = $res;
-		$this->load->view('list_css',$data);
+        $data['class_name'] = $this->article_mdl->get_cat_by_id($id);
+        $this->site_mdl->header();
+		$this->load->view('list_view',$data);
+        $this->site_mdl->footer();
 	}
 
-    public function center_brief($id){
-        $data['brief_cat'] = $this->article_mdl->get_art_by_id($id);
-        $this->load->view('header');
-        $this->load->view('nav');
-        $this->load->view('center_brief',$data);
-        $this->load->view('footer');
-    }
 }
 ?>

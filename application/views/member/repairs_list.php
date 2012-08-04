@@ -36,7 +36,7 @@
         <tr>
         	<td><?php echo $equip->equip_name;?></td>
         	<td><?php echo $equip->reason;?></td>
-        	<td><?php echo $equip->create_time;?></td>
+        	<td><?php echo date('Y-m-d', strtotime($equip->create_time));?></td>
         	<td><?php echo $equip->person;?></td>
         	<td class="repair_status"><?php echo $equip->status;?></td>
             <td>

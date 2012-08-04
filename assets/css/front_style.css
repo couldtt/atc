@@ -332,6 +332,7 @@ ul li{
 	height: 28px;
 	float: left;
 	margin: 20px 0px 0px 65px;
+    padding-bottom:8px;
 	border-bottom: 1px solid #0e8ac0;
 }
 #topborder_nav p{
