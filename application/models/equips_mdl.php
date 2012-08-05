@@ -4,11 +4,50 @@ class Equips_mdl extends CI_Model{
         parent::__construct();
     }
 
+////////////////////////
+//    查询操作   //////
+///////////////////////
     function get_all_equips(){
         $res = $this->db
                     ->get('dili_u_m_equips')
                     ->result();
         return $res;
+    }
+
+    function get_all_equips_brief(){
+        $res = $this->db
+                    ->select('id,equip_name')
+                    ->get('dili_u_m_equips')
+                    ->result();
+        return $res;
+    }
+
+    function get_votes_by_id($id){
+        $map = array(
+            'equip_id' => $id
+        );
+        $res = $this->db
+                    ->select('votes')
+                    ->where($map)
+                    ->get('dili_u_m_votes')
+                    ->result();
+        return $res[0];
+    }
+
+    /*
+     *@功能: 得到所有已经加入到论证投票列表的仪器编号
+     *@return: an array of equips in vote list
+     * */
+    function get_all_polls(){
+        $res = $this->db
+                    ->select('id,equip_id')
+                    ->get('dili_u_m_votes')
+                    ->result();
+        $polls = array();
+        foreach($res as $r){
+            $polls[] = $r->equip_id;
+        }
+        return $polls;
     }
 
     function get_all_equip_votes(){
@@ -45,7 +84,7 @@ class Equips_mdl extends CI_Model{
     /*
      *@功能:获取一件设备的相关建议以及建议的提出者
      *@parameter: id(设备ID)
-     *@return: 一个设备类
+     *@return: 一个包含建议及其提出着的设备类
      * */
     function get_equip_with_suggs_by_id($id){
         $map = array(
@@ -70,6 +109,38 @@ class Equips_mdl extends CI_Model{
         $res['basic'] = $this->get_equip_with_votes_by_id($id);
         $res['suggs'] = $this->get_equip_with_suggs_by_id($id);
         return $res;
+    }
+
+/////////////////////////////////////////////////////////////////////////////////////
+//  插入修改删除操作
+///////////////////////////////////////////////////////////////////////////////////
+
+    function add_to_list($polls){
+        $data = array();
+        foreach ($polls as $poll){
+            $data[] = array(
+                'equip_id' => $poll
+            );
+        }
+        $res = $this->db
+                    ->insert_batch('dili_u_m_votes', $data); //插入多条数据
+        if ($res)
+            return true;
+    }
+
+    function vote_add($equips){
+        $data = array();
+        foreach ($equips as $equip){
+            $num = $this->get_votes_by_id($equip)->votes;
+            $num += 1;
+            $data[] = array(
+                'equip_id' => $equip,
+                'votes'    => $num
+            );
+        }
+        $res = $this->db
+                    ->update_batch('dili_u_m_votes', $data, 'equip_id');
+        return true;
     }
 }
 ?>

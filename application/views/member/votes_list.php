@@ -10,7 +10,7 @@
     <?php foreach($equips as $equip){ ?>
 		<tr>
 			<td><?php echo $equip->id;?></td>
-			<td><?php echo $equip->equip_name;?></td>
+			<td><?php echo anchor("v_detail/$equip->id","$equip->equip_name");?></td>
 			<td><?php echo $equip->equip_price;?></td>
 			<td><?php echo $equip->votes;?></td>
 		</tr>

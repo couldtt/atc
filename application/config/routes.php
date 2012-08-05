@@ -42,6 +42,10 @@ $route['default_controller'] = "index";
 $route['admin'] = "admin/login";
 $route['404_override'] = '';
 $route['center'] = "centerbrief";
+$route['member'] = "member/home";
+$route['v_detail/(:num)'] = "member/votes/detail_page/$1";
+$route['v_add'] = "member/votes/add_page";
+$route['v_vote'] = "member/votes/vote_page";
 
 
 /* End of file routes.php */
