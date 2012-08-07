@@ -83,7 +83,7 @@
 <script language="javascript">
 	var confirm_str = '是否要删除所选信息？\n此操作还会删除附件等关联信息!';
 	$('a.confirm_delete').click(function(){
-		return confirm(confirm_str);	
+		return confirm(confirm_str);
 	});
 	function multi_delete()
 	{
@@ -100,7 +100,7 @@
 			}
 			else
 			{
-				return false;	
+				return false;
 			}
 		}
 	}

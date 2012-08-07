@@ -29,11 +29,6 @@
 			$this->load->library('dili/field_behavior');
 			$data['provider'] = $this->_pagination($data['model']);
 			$this->_template('content_list',$data);
-		/*	header("Content-Type: text/html; charset=utf-8");
-			echo "<pre>";
-			print_r($data);
-		 	echo "</pre>";
-		*/
 		}
 
 		function _pagination( & $model){

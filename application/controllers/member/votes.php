@@ -11,16 +11,15 @@ class Votes extends Member_Controller{
     }
 
     function list_page(){
-		header("Content-Type: text/html; charset=utf-8");
         $data['equips'] = $this->equips_mdl->get_all_equip_votes();
         //dump($data);
-        $this->load->view('member/votes_list', $data);
+        $this->_template('votes_list', $data);
     }
 
     function detail_page($id){
 		header("Content-Type: text/html; charset=utf-8");
         $data['equips'] = $this->equips_mdl->get_equip_with_all_by_id($id);
-        $this->load->view('member/votes_detail', $data);
+        $this->_template('votes_detail', $data);
     }
 
     function add_page(){
@@ -32,12 +31,12 @@ class Votes extends Member_Controller{
         }
         $diff = array_diff($id_list,$data['polls']);
         if (!empty($diff)){
-            $this->load->view('member/votes_add', $data);
+            $this->_template('votes_add', $data);
         } else {
             $data['msg'] = '所有设备都已加入论证列表';
             unset($data['equips']);
             unset($data['polls']);
-            $this->load->view('member/votes_add', $data);
+            $this->_template('votes_add', $data);
         }
         unset($id_list);
         unset($diff);
@@ -45,7 +44,7 @@ class Votes extends Member_Controller{
 
     function vote_page(){
         $data['equips'] = $this->equips_mdl->get_all_equip_votes();
-        $this->load->view('member/votes_vote', $data);
+        $this->_template('votes_vote', $data);
     }
 
     function _add_post(){

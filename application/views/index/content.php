@@ -3,7 +3,7 @@
   <div id="shang">
       <div id="tzgg">
         <div id="more">
-        <a href="<?php echo site_url("listview/view/3"); ?>"><img src="<?php echo base_url();?>assets/pic/more.png" /></a>
+        <a href="<?php echo site_url("notices"); ?>"><img src="<?php echo base_url();?>assets/pic/more.png" /></a>
         </div>
         <div id="zi1">
             <ul>
@@ -33,9 +33,22 @@
             </ul>
         </div>
       </div>
+<?php
+if ($is_login == true){
+?>
+<div id="hyxx">
+<div class="login_content">
+<span>你好,</span><?php echo $userinfo->username; ?>
+<br /><br />
+<span>进入</span><?php echo anchor('member/home','会员中心'); ?>
+</div>
+</div>
+<?php
+} else {
+?>
       <div id="hydl">
-      	<form action="<?php echo site_url("member/login/do");?>" method="POST">
-          <div id="neirong">
+        <form action="<?php echo site_url("member/login/do");?>" method="POST">
+          <div class="login_content">
             <tr>
               <td class="word"><span class="login">用户名：</span></td>
                 <td>
@@ -69,6 +82,9 @@
         </form>
       </div>
   </div>
+<?php
+}
+?>
   <div id="xia">
   	<div id="xiaokuai">
     	<div class="xiaotu">

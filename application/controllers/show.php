@@ -6,7 +6,7 @@
 class Show extends CI_Controller{
 	public function __construct(){
 		parent::__construct();
-		$this->load->model('article_mdl');
+		$this->load->model(array('article_mdl','site_mdl'));
 	}
 
 	public function index(){
@@ -14,9 +14,11 @@ class Show extends CI_Controller{
 	}
 
 	public function detail($id = 1){
-		$res = $this->article_mdl->get_art_by_id($id);
-		$data['article'] = $res;
-		$this->load->view('article_detail',$data);
+        $this->site_mdl->header();
+		$data['article'] = $this->article_mdl->get_art_by_id($id);
+        $data['catname'] = $this->article_mdl->get_cat_by_id($data['article']->classid);
+		$this->load->view('article_view',$data);
+        $this->site_mdl->footer();
 	}
 }
 ?>

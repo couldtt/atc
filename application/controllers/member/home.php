@@ -6,13 +6,10 @@ class Home extends Member_Controller{
 	}
 
 	function index(){
-		header("Content-Type: text/html; charset=utf-8");
-		$uid = $this->session->userdata('uid');
-		$user = $this->user_mdl->get_user_by_uid($uid);
-		echo '欢迎您,'.$user->username;
-		echo anchor('member/login/quit','注销');
-		echo "<br />";
-		$this->_side();
+		$data['uid'] = $this->session->userdata('uid');
+		$data['user'] = $this->user_mdl->get_user_by_uid($data['uid']);
+		//$this->_side();
+        $this->_template('home');
 	}
 
 	protected function _side(){

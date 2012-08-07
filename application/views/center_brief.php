@@ -3,7 +3,7 @@
       	<p>中心简介</p>
       </div>
       <div id="topborder_nav">
-        <p>首页>>中心简介</p>
+      <p><?php echo anchor('index','首页');?>&nbsp;>>&nbsp;中心简介</p>
       </div>
   </div>
   <div id="left_side">

@@ -10,15 +10,19 @@
     <div id="left-content">
       <ul>
       <li><img src="<?php echo base_url();?>assets/pic/dian.png" /><a href="<?php echo site_url("center"); ?>">   中心简介</a></li>
+      <li><img src="<?php echo base_url();?>assets/pic/dian.png" /><a href="<?php echo site_url("notices"); ?>">  通知公告</a></li>
       </ul>
     </div>
   </div>
   <div id="right_side">
     <div class="contenttext">
-      <ul id="">
+      <ul id="art_list">
         <?php foreach($art_lists as $art_list){
         ?>
-        <li><?php echo anchor("show/detail/$art_list->id","$art_list->title");?></li>
+            <li>
+              <span class="title"><?php echo anchor("a_detail/$art_list->id","$art_list->title");?></span>
+              <span class="date">[<?php echo date('Y-m-d',$art_list->update_time);?>]</span>
+            </li>
         <?php
         }
         ?>

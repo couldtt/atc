@@ -83,7 +83,7 @@
 <script language="javascript">
 	var confirm_str = '是否要删除所选信息？\n此操作还会删除附件等关联信息!';
 	$('a.confirm_delete').click(function(){
-		return confirm(confirm_str);	
+		return confirm(confirm_str);
 	});
 	function multi_delete()
 	{
@@ -100,10 +100,11 @@
 			}
 			else
 			{
-				return false;	
+				return false;
 			}
 		}
 	}
 </script>
 <script src="js/dili_utility/content_form.js" type="text/javascript"></script>
+<script src="js/addmenu.js"></script>
 <?php $this->plugin_manager->trigger_model_action('register_list_view', $provider['list']); ?>
