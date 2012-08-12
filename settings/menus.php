@@ -1,22 +1,22 @@
 <?php if ( ! defined('IN_DiliCMS')) exit('No direct script access allowed');
 $setting['menus']=array (
-  0 =>
+  0 => 
   array (
     'menu_id' => '1',
     'class_name' => 'system',
     'method_name' => 'home',
     'menu_name' => '系统',
-    'sub_menus' =>
+    'sub_menus' => 
     array (
-      0 =>
+      0 => 
       array (
         'menu_id' => '2',
         'class_name' => 'system',
         'method_name' => 'home',
         'menu_name' => '后台首页',
-        'sub_menus' =>
+        'sub_menus' => 
         array (
-          0 =>
+          0 => 
           array (
             'menu_id' => '3',
             'class_name' => 'system',
@@ -25,36 +25,36 @@ $setting['menus']=array (
           ),
         ),
       ),
-      1 =>
+      1 => 
       array (
         'menu_id' => '4',
         'class_name' => 'setting',
         'method_name' => 'site',
         'menu_name' => '系统设置',
-        'sub_menus' =>
+        'sub_menus' => 
         array (
-          0 =>
+          0 => 
           array (
             'menu_id' => '5',
             'class_name' => 'setting',
             'method_name' => 'site',
             'menu_name' => '站点设置',
           ),
-          1 =>
+          1 => 
           array (
             'menu_id' => '6',
             'class_name' => 'setting',
             'method_name' => 'backend',
             'menu_name' => '后台设置',
           ),
-          2 =>
+          2 => 
           array (
             'menu_id' => '7',
             'class_name' => 'system',
             'method_name' => 'password',
             'menu_name' => '修改密码',
           ),
-          3 =>
+          3 => 
           array (
             'menu_id' => '8',
             'class_name' => 'system',
@@ -63,22 +63,22 @@ $setting['menus']=array (
           ),
         ),
       ),
-      2 =>
+      2 => 
       array (
         'menu_id' => '9',
         'class_name' => 'model',
         'method_name' => 'view',
         'menu_name' => '模型管理',
-        'sub_menus' =>
+        'sub_menus' => 
         array (
-          0 =>
+          0 => 
           array (
             'menu_id' => '10',
             'class_name' => 'model',
             'method_name' => 'view',
             'menu_name' => '内容模型管理',
           ),
-          1 =>
+          1 => 
           array (
             'menu_id' => '11',
             'class_name' => 'category',
@@ -87,15 +87,15 @@ $setting['menus']=array (
           ),
         ),
       ),
-      3 =>
+      3 => 
       array (
         'menu_id' => '12',
         'class_name' => 'plugin',
         'method_name' => 'view',
         'menu_name' => '插件管理',
-        'sub_menus' =>
+        'sub_menus' => 
         array (
-          0 =>
+          0 => 
           array (
             'menu_id' => '13',
             'class_name' => 'plugin',
@@ -104,22 +104,22 @@ $setting['menus']=array (
           ),
         ),
       ),
-      4 =>
+      4 => 
       array (
         'menu_id' => '14',
         'class_name' => 'role',
         'method_name' => 'view',
         'menu_name' => '权限管理',
-        'sub_menus' =>
+        'sub_menus' => 
         array (
-          0 =>
+          0 => 
           array (
             'menu_id' => '15',
             'class_name' => 'role',
             'method_name' => 'view',
             'menu_name' => '用户组管理',
           ),
-          1 =>
+          1 => 
           array (
             'menu_id' => '16',
             'class_name' => 'user',
@@ -130,44 +130,44 @@ $setting['menus']=array (
       ),
     ),
   ),
-  1 =>
+  1 => 
   array (
     'menu_id' => '17',
     'class_name' => 'content',
     'method_name' => 'view',
     'menu_name' => '内容管理',
-    'sub_menus' =>
+    'sub_menus' => 
     array (
-      0 =>
+      0 => 
       array (
         'menu_id' => '18',
         'class_name' => 'content',
         'method_name' => 'view',
         'menu_name' => '内容管理',
-        'sub_menus' =>
+        'sub_menus' => 
         array (
-          0 =>
+          0 => 
           array (
             'class_name' => 'content',
             'method_name' => 'view',
             'extra' => 'article',
             'menu_name' => '文章管理模块',
           ),
-          1 =>
+          1 => 
           array (
             'class_name' => 'content',
             'method_name' => 'view',
             'extra' => 'repairs',
             'menu_name' => '设备报修模块',
           ),
-          2 =>
+          2 => 
           array (
             'class_name' => 'content',
             'method_name' => 'view',
             'extra' => 'flinks',
             'menu_name' => '友情链接模块',
           ),
-          3 =>
+          3 => 
           array (
             'class_name' => 'content',
             'method_name' => 'view',
@@ -176,15 +176,15 @@ $setting['menus']=array (
           ),
         ),
       ),
-      1 =>
+      1 => 
       array (
         'menu_id' => '19',
         'class_name' => 'category_content',
         'method_name' => 'view',
         'menu_name' => '分类管理',
-        'sub_menus' =>
+        'sub_menus' => 
         array (
-          0 =>
+          0 => 
           array (
             'class_name' => 'category_content',
             'method_name' => 'view',
@@ -195,13 +195,13 @@ $setting['menus']=array (
       ),
     ),
   ),
-  2 =>
+  2 => 
   array (
     'menu_id' => '20',
     'class_name' => 'module',
     'method_name' => 'run',
     'menu_name' => '工具',
-    'sub_menus' =>
+    'sub_menus' => 
     array (
     ),
   ),

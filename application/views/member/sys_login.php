@@ -18,7 +18,7 @@
 				<div class="login_title">用户登录</div>
 				<div class="login_cont">
 					<b><?php echo $this->session->flashdata('error'); ?></b>
-					<form action="<?php echo site_url('member/login/login');?>" method='post'>
+					<form action="<?php echo site_url('member/login/do');?>" method='post'>
 						<table class="form_table">
 							<col width="90px" />
 							<col />

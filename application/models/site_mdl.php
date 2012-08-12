@@ -3,7 +3,7 @@ class Site_mdl extends CI_Model{
 	function __construct(){
 		parent::__construct();
 		$this->load->model('article_mdl');
-		$this->load->model('dili/user_mdl');
+		$this->load->model('dili/member_mdl');
 	}
 
 	function header(){
@@ -16,15 +16,19 @@ class Site_mdl extends CI_Model{
 	}
 
 	function content(){
+        //传递数据
 		$data['notices'] = $this->article_mdl->get_latest_by_id(3,8);
+        $data['academics'] = $this->article_mdl->get_latest_by_id(4,8);
         $data['flinks'] = $this->get_flinks();
-        $uid = $this->session->userdata('uid');
-        if (!empty($uid)) {
-            $data['userinfo'] = $this->user_mdl->get_user_by_uid($this->session->userdata('uid'));
+        //判断用户是否登录
+        $memberid = $this->session->userdata('memberid');
+        if (!empty($memberid)) {
+            $data['userinfo'] = $this->member_mdl->get_member_by_uid($memberid);
             $data['is_login'] = true;
         } else {
             $data['is_login'] = false;
         }
+        //载入视图
 		$this->load->view('index/content',$data);
 	}
 

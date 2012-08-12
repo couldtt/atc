@@ -18,18 +18,19 @@
       </div>
       <div id="xshd">
       	<div id="more1">
-        	<a href="#"><img src="<?php echo base_url();?>assets/pic/more.png" /></a>
+        	<a href="<?php echo site_url('academics');?>"><img src="<?php echo base_url();?>assets/pic/more.png" /></a>
         </div>
         <div id="zi2">
         	<ul>
-              <li><img src="<?php echo base_url();?>assets/pic/dian.png" /><a href="#">  杨凌示范区关于织申关于财关于织申政局关于织关于织申申报间放</a></li>
-              <li><img src="<?php echo base_url();?>assets/pic/dian.png" /><a href="#">  杨凌示范区财政局关于织申报间放</a></li>
-              <li><img src="<?php echo base_url();?>assets/pic/dian.png" /><a href="#">  杨凌示范区财政局关于织申报间放</a></li>
-              <li><img src="<?php echo base_url();?>assets/pic/dian.png" /><a href="#">  杨凌示范区财政局关于织申报间放</a></li>
-              <li><img src="<?php echo base_url();?>assets/pic/dian.png" /><a href="#">  杨凌示范区财政局关于织申报间放</a></li>
-              <li><img src="<?php echo base_url();?>assets/pic/dian.png" /><a href="#">  杨凌示范区财政局关于织申报间放</a></li>
-              <li><img src="<?php echo base_url();?>assets/pic/dian.png" /><a href="#">  杨凌示范区财政局关于织申报间放</a></li>
-              <li><img src="<?php echo base_url();?>assets/pic/dian.png" /><a href="#">  杨凌示范区财政局关于织申报间放</a></li>
+                <?php foreach($academics as $academic){
+                ?>
+                <li>
+                    <img src="<?php echo base_url();?>assets/pic/dian.png" />
+                    <?php echo anchor("a_detail/$academic->id",$academic->title);?>
+                </li>
+                <?php
+                }
+                ?>
             </ul>
         </div>
       </div>

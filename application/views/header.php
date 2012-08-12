@@ -10,7 +10,7 @@
 <div id="all">
   <div id="logo">
     <div id="sousuo">
-    	<form name="input" action="" method="get">
+    	<form name="input" action="<?php echo site_url('search');?>" method="get">
 		站内搜索<input type="text" name="search_content" />
 		<input type="submit" value=" Go " />
 		</form>

@@ -20,12 +20,12 @@
 			$this->load->library('session');
 			$this->load->switch_theme('on',setting('backend_theme'),'membercp/');
 			$this->load->database();
-			$this->load->model('dili/user_mdl');
+			$this->load->model('dili/member_mdl');
 		}
 		
 		function index()
 		{
-			if( $this->session->userdata('uid') )
+			if( $this->session->userdata('memberid') )
 			{
 				redirect('member/home');
 			}
@@ -56,21 +56,13 @@
 			
 			if($username && $password)
 			{
-				$admin = $this->user_mdl->get_full_user_by_username( $username );
-				if($admin)
+				$member = $this->member_mdl->get_member_by_name( $username );
+				if($member)
 				{
-					if( $admin->password == md5($password) )
+					if( $member->password == md5($password) )
 					{
-						if($admin->role == 1 && !setting('backend_root_access'))
-						{
-							$this->session->set_flashdata('error', "系统限制了ROOT用户登录,请联系管理员!");
-							redirect('member/login');	
-						}
-						else
-						{
-							$this->session->set_userdata('uid',$admin->uid);
+							$this->session->set_userdata('memberid',$member->id);
 							redirect(site_url('member/home'));
-						}
 					}
 					else
 					{

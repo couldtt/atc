@@ -41,9 +41,14 @@
 $route['default_controller'] = "index";
 $route['admin'] = "admin/login";
 $route['404_override'] = '';
+
 $route['center'] = "centerbrief";
 $route['notices'] = "listview/view/3";
+$route['academics'] = "listview/view/4";
+$route['metric'] = 'listview/view/2';
 $route['member'] = "member/home";
+
+$route['list/page/(:num)/(:num)'] = "listview/page/$1/$2";
 $route['a_detail/(:num)'] = "show/detail/$1";
 $route['a_list/(:num)'] = "listview/view/$1";
 $route['v_detail/(:num)'] = "member/votes/detail_page/$1";

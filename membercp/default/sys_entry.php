@@ -16,12 +16,11 @@
 		</div>
 		<div id="menu">
 			<ul name="menu">
-                <?php $this->acl->show_top_menus(); ?>
+                <?php //$this->acl->show_top_menus(); ?>
             </ul>
 		</div>
 		<p>
         	<a href="<?php echo backend_url('login/quit'); ?>">退出管理</a>
-            <a href="<?php echo backend_url('system/home'); ?>">后台首页</a>
             <a href="<?php echo base_url(); ?>" target='_blank'>站点首页</a>
             <span>您好 <label class='bold'><?php echo $this->_admin->username; ?></label>，
             当前身份 <label class='bold'><?php echo $this->_admin->name; ?></label></span>
@@ -33,7 +32,7 @@
 	</span></div>
 	<div id="admin_left">
 		<ul class="submenu">
-            <?php $this->acl->show_left_menus(); ?>
+            <?php //$this->acl->show_left_menus(); ?>
         </ul>
 	</div>
 	<div id="admin_right">

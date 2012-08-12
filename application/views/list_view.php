@@ -11,6 +11,7 @@
       <ul>
       <li><img src="<?php echo base_url();?>assets/pic/dian.png" /><a href="<?php echo site_url("center"); ?>">   中心简介</a></li>
       <li><img src="<?php echo base_url();?>assets/pic/dian.png" /><a href="<?php echo site_url("notices"); ?>">  通知公告</a></li>
+      <li><img src="<?php echo base_url();?>assets/pic/dian.png" /><a href="<?php echo site_url("academics"); ?>"> 学术活动</a></li>
       </ul>
     </div>
   </div>
@@ -27,5 +28,9 @@
         }
         ?>
       </ul>
+        <div style="margin-top: 10px; font-size: 12px;">
+            <?php echo $create_links; ?>
+        </div>
+
     </div>
   </div>

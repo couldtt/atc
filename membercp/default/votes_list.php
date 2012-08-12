@@ -1,5 +1,5 @@
-<h4>大型仪器设备论证结果</h4>
-<table>
+<table class="list_table">
+	<capation><h3>大型仪器设备论证结果</h3></capation>
 	<thead>
 		<th>ID</th>
 		<th>设备名</th>

@@ -136,49 +136,32 @@
 			$this->config->set_item('sess_match_useragent' ,TRUE)	;
 			$this->config->set_item('sess_time_to_update' ,300)	;
 			$this->_check_login();
-			$this->load->library('dili/acl');
-			$this->load->library('dili/plugin_manager');
+			//$this->load->library('dili/acl');
+			//$this->load->library('dili/plugin_manager');
 		}
 
 		function _check_login()
 		{
-			if(! $this->session->userdata('uid'))
+			if(! $this->session->userdata('memberid'))
 			{
 				redirect('member/login');
 			}
 			else
 			{
-				$this->_admin = $this->db->select('dili_admins.uid , dili_admins.username, dili_admins.role , dili_roles.name')
+			/*	$this->_admin = $this->db->select('dili_members.id , dili_members.username, dili_admins.role , dili_roles.name')
 								  		->from('dili_admins')
 								  		->join('dili_roles','dili_roles.id = dili_admins.role')
 								  		->where('dili_admins.uid' , $this->session->userdata('uid') )
 								  		->get()
 								  		->row();
-			}
-		}
+            */
+                $this->_admin = $this->db
+                                     ->select('id,username,')
+                                     ->where('dili_members.id',$this->session->userdata('memberid'))
+                                     ->get('dili_members')
+                                     ->row();
 
-		function _check_permit($action = '')
-		{
-			if(!$this->acl->permit($action))
-			{
-				$this->_message('对不起，你没有访问这里的权限！','',false);
 			}
-		}
-
-		function _message($msg, $goto = '',$auto = true,$fix = '')
-		{
-			if($goto == '')
-			{
-				$goto = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : site_url();
-			}
-			else
-			{
-				$goto = strpos($goto,'http') !== false ? $goto : backend_url($goto);
-			}
-			$goto .= $fix;
-			$this->_template('sys_message',array('msg'=>$msg,'goto'=>$goto,'auto'=>$auto));
-			echo $this->output->get_output();
-			exit();
 		}
 
 		function _template($template, $data = array())

@@ -2,12 +2,12 @@
 class Home extends Member_Controller{
 	function __construct(){
 		parent::__construct();
-		$this->load->model('dili/user_mdl');
+		$this->load->model('dili/member_mdl');
 	}
 
 	function index(){
-		$data['uid'] = $this->session->userdata('uid');
-		$data['user'] = $this->user_mdl->get_user_by_uid($data['uid']);
+		$data['memberid'] = $this->session->userdata('memberid');
+		$data['user'] = $this->member_mdl->get_member_by_uid($data['memberid']);
 		//$this->_side();
         $this->_template('home');
 	}

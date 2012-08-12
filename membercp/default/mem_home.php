@@ -23,11 +23,9 @@
         -->
 		</div>
 		<p>
-        	<a href="<?php echo backend_url('login/quit'); ?>">退出管理</a>
-            <a href="<?php echo backend_url('system/home'); ?>">后台首页</a>
+        	<a href="<?php echo site_url('member/login/quit'); ?>">退出管理</a>
             <a href="<?php echo base_url(); ?>" target='_blank'>站点首页</a>
             <span>您好 <label class='bold'><?php echo $this->_admin->username; ?></label>，
-            当前身份 <label class='bold'><?php echo $this->_admin->name; ?></label></span>
         </p>
 	</div>
 
@@ -51,6 +49,12 @@
                 <ul name="menu">
                     <li><a href="<?php echo site_url("member/repairs/list_page");?>">报修列表</a></li>
                     <li><a href="<?php echo site_url("member/repairs/add_page");?>">添加待修设备</a></li>
+                </ul>
+            </li>
+            <li>
+                <span>仪器设备管理</span>
+                <ul>
+                    <li><?php echo anchor('member/equips/add_page','添加设备');?> </li>
                 </ul>
             </li>
         </ul>

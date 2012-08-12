@@ -30,4 +30,14 @@ $setting['category']['art_cat']=array (
     'children' => '0',
     'deep' => 0,
   ),
+  4 => 
+  array (
+    'classid' => '4',
+    'parentid' => '0',
+    'level' => '1',
+    'path' => '',
+    'catname' => '学术活动',
+    'children' => '0',
+    'deep' => 0,
+  ),
 );

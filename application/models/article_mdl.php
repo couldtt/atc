@@ -122,6 +122,20 @@ class Article_mdl extends CI_Model{
 		return $res;
 	}
 
+    /*
+    * @功能：搜索文章
+    * @parameter: search_content(搜素的内容)
+    * @return: 一个对象数组
+    */
+    function search($search_content){
+        $res = $this->db
+                    ->select('id,title,update_time')
+                    ->like('title', $search_content)
+                    ->get('dili_u_m_article')
+                    ->result();
+        return $res;
+    }
+
     /**
      *@功能：获取最新的友情链接
      *@parameter: limit(限制的条数)
@@ -134,6 +148,8 @@ class Article_mdl extends CI_Model{
                     ->result();
         return $res;
     }
+
+
 
 }
 ?>
