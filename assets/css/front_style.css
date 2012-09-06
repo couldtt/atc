@@ -379,7 +379,7 @@ ul li{
 /*right*/
 #right_side{
 	width: 790px;
-	height: 510px;
+	height: auto;
 	float: left;
 
 }

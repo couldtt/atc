@@ -1,0 +1,17 @@
+.vdtl {
+	overflow: hidden;
+}
+.vdtl caption{
+	background: #E5EDF2;
+	border-top: 1px solid #C2D5E3;
+	font-size: 14px;
+	font-weight: 700;
+}
+.vdtl td, .vdtl th, .vdtl caption {
+padding: 5px;
+border-bottom: 1px solid #C2D5E3;
+}
+.vdtl th{
+	text-align:left;
+	width: 16%;
+}

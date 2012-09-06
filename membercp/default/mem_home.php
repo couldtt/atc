@@ -4,7 +4,7 @@
 <title><?php echo setting('backend_title'); ?></title>
 <base href="<?php echo base_url().'admincp/'.setting('backend_theme').'/'; ?>" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" href="images/admin.css" />
+<link rel="stylesheet" href="<?php echo base_url();?>membercp/default/images/admin.css" />
 <script language="javascript" src="js/jquery.js"></script> <script language="javascript" src="js/admin.js"></script>
 </head>
 <body>

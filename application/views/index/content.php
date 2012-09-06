@@ -95,10 +95,10 @@ if ($is_login == true){
         <a href="<?php echo site_url('member/repairs');?>"><img src="<?php echo base_url();?>assets/pic/xiaokuai2.png" /></a>
         </div>
         <div class="xiaotu"><!-- 大型仪器设备论证 -->
-        <a href="<?php echo site_url('member/votes');?>"><img src="<?php echo base_url();?>assets/pic/xiaokuai3.png" /></a>
+        <a href="<?php echo site_url('v_vote');?>"><img src="<?php echo base_url();?>assets/pic/xiaokuai3.png" /></a>
         </div>
         <div class="xiaotu">
-        <a href="#"><img src="<?php echo base_url();?>assets/pic/xiaokuai4.png" /></a>
+        <a href="<?php echo site_url('academics');?>"><img src="<?php echo base_url();?>assets/pic/xiaokuai4.png" /></a>
         </div>
     </div>
     <div id="yuyuedan">

@@ -15,3 +15,26 @@ border-bottom: 1px solid #C2D5E3;
 	text-align:left;
 	width: 16%;
 }
+
+.comment_area{
+    background: url(../pic/textarea.png) no-repeat left 0;
+    width: 400px;
+    height: 160px;
+}
+.comment_area:hover{
+
+}
+
+#comment{
+    padding: 8px !important;
+    margin: 1px;
+    line-height: 1.3em;
+    width: 380px !important;
+    height: 140px;
+    border: none;
+    background: none;
+    font-size: 12px;
+    padding: 6px 8px 2px;
+    width: 184px;
+    color: #656565;
+}

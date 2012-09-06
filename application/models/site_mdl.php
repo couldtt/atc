@@ -6,8 +6,9 @@ class Site_mdl extends CI_Model{
 		$this->load->model('dili/member_mdl');
 	}
 
-	function header(){
-		$this->load->view('header');
+	function header($css = array()){
+        $data['css'] = $css;
+		$this->load->view('header',$data);
 		$this->nav();
 	}
 

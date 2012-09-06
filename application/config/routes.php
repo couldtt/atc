@@ -54,6 +54,8 @@ $route['a_list/(:num)'] = "listview/view/$1";
 $route['v_detail/(:num)'] = "member/votes/detail_page/$1";
 $route['v_add'] = "member/votes/add_page";
 $route['v_vote'] = "member/votes/vote_page";
+$route['v_comment/(:num)'] = 'member/votes/comment_page/$1';
+$route['v_comment_add'] = 'member/votes/comment';
 
 
 /* End of file routes.php */
